@@ -23,7 +23,7 @@ use App\Http\Controllers\UserTaskController;
 
 // Public routes
 Route::post('/auth/telegram-user', [AuthController::class, 'telegramUser']);
-
+Route::get('/auth/hello', [AuthController::class, 'tele']);
 // popup messages
 Route::get('/popups', [PopupController::class, 'index']);
 
@@ -39,6 +39,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
         // Tapping
         Route::post('/tap', [ClickerController::class, 'tap']);
+         Route::get('/trr', [ClickerController::class, 'trr']);
 
         // Boosters
         Route::post('/buy-booster', [ClickerController::class, 'buyBooster']);

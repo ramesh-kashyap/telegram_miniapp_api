@@ -116,6 +116,10 @@ class ClickerController extends Controller
         ]);
     }
 
+    public function trr (Request $request){
+        return response()->json("hello buddy");
+    }
+
     public function buyBoosterPack(Request $request)
     {
         $request->validate([

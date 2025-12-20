@@ -49,4 +49,12 @@ class AuthController extends Controller
             'token' => $token->plainTextToken,
         ]);
     }
+    // public function tele(Request $request)
+    // {
+        
+
+    //     return response()->json([
+    //         'first_login' => "hllo",
+    //     ]);
+    // }
 }
