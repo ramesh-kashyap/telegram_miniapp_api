@@ -9,6 +9,10 @@ use App\Http\Controllers\ReferralTaskController;
 use App\Http\Controllers\TelegramUserController;
 use App\Http\Controllers\UserMissionController;
 use App\Http\Controllers\UserTaskController;
+use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\AssetController;
+use App\Http\Controllers\SwapController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +35,11 @@ Route::get('/popups', [PopupController::class, 'index']);
 Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('referred-users', [TelegramUserController::class, 'referredUsers']);
-
+    Route::get('/deposit/address', [UserTaskController::class, 'createCryptoAddress']);
+    Route::get('/history', [HistoryController::class, 'index']);
+    Route::get('/assets', [AssetController::class, 'index']);
+    Route::get('/swap/info', [SwapController::class, 'info']);
+    Route::post('/swap/submit', [SwapController::class, 'submit']);
     // Clicker game routes
     Route::prefix('clicker')->group(function () {
         // Sync user data
@@ -51,6 +59,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/claim-daily-task', [ClickerController::class, 'claimDailyTaskReward']);
 
         // Regular tasks
+      
         Route::get('tasks', [UserTaskController::class, 'index']);
         Route::post('tasks/{task}', [UserTaskController::class, 'store']);
         Route::post('tasks/{task}/claim', [UserTaskController::class, 'claim']);
@@ -58,6 +67,7 @@ Route::middleware('auth:sanctum')->group(function () {
         // Referral tasks
         Route::get('referral-tasks', [ReferralTaskController::class, 'index']);
         Route::post('referral-tasks/{task}/complete', [ReferralTaskController::class, 'complete']);
+        
 
         // Leaderboard
         Route::get('/leaderboard', [ClickerController::class, 'listLeaderboard']);
