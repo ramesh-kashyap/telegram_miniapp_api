@@ -6,9 +6,50 @@ use App\Models\Task;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 
 class UserTaskController extends Controller
 {
+
+
+
+
+    public function createCryptoAddress(Request $request)
+        {
+           $user = $request->user();
+
+            $network = $request->get('network', 'BSC'); // BSC | TRON
+
+            if ($network === 'TRON') {
+                $url = 'https://api.cryptapi.io/trc20/usdt/create/';
+                $mainAddress = 'TD4KhBToV1nKRumY4L7jJzR4cWLK9xzmyb';
+            } else {
+                $url = 'https://api.cryptapi.io/bep20/usdt/create/';
+                $mainAddress = '0x29EFD41e774E88E3374Eb741572e14076816F413';
+            }
+
+            $response = Http::get($url, [
+                'callback'      => route('cryptapi.callback', [
+                    'refid' => $user->id,
+                    'network' => strtolower($network),
+                ]),
+                'address'       => $mainAddress,
+                'confirmations' => 1,
+                'pending'       => 0,
+                'priority'      => 'default',
+            ]);
+
+            $data = $response->json();
+
+            return response()->json([
+                'status'   => true,
+                'network'  => $network,
+                'currency' => 'USDT',
+                'address'  => $data['address_in'] ?? null,
+            ]);
+        }
+
+
     /**
      * Display a listing of the resource.
      */
