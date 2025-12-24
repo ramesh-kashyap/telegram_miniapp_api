@@ -103,4 +103,32 @@ public function submit(Request $request)
     }
 }
 
+
+public function history(Request $request)
+{
+      $userId = $request->user()->id;
+   $user = \App\Models\TelegramUser::find($userId);
+
+    $swaps = \DB::table('swaps')
+        ->where('user_id', $user->id)
+        ->orderByDesc('id')
+        ->limit(10)
+        ->get()
+        ->map(function ($row) {
+            return [
+                'id' => $row->id,
+                'type' => "{$row->from_token} → {$row->to_token}",
+                'amount' => $row->amount,
+                'receive' => $row->receive,
+                'from_token' => $row->from_token,
+                'to_token' => $row->to_token,
+                'created_at' => $row->created_at,
+            ];
+        });
+
+    return response()->json([
+        'data' => $swaps,
+    ]);
+}
+
 }

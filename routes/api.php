@@ -40,8 +40,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/assets', [AssetController::class, 'index']);
     Route::post('/packages/buy', [AssetController::class, 'buy']);
     Route::get('/packages/my', [AssetController::class, 'myPackages']);
+    Route::post('/withdraw', [AssetController::class, 'withdraw']);
     
-    
+    Route::get('/swap/history', [SwapController::class, 'history']);
     Route::get('/swap/info', [SwapController::class, 'info']);
     Route::post('/swap/submit', [SwapController::class, 'submit']);
     // Clicker game routes

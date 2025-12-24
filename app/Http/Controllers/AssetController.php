@@ -46,8 +46,12 @@ class AssetController extends Controller
          $usdtBalance = (float) $user->usdt_balance;
 
         $oftBalance = (float) $user->balance;
-
         /* ---------------- INCOME CARDS ---------------- */
+
+        $totalPackage = DB::table('investments')
+            ->where('user_id', $userId)
+            ->where('status', 'Active')
+            ->sum('amount');
 
         $dailyRoi = DB::table('incomes')
             ->where('user_id', $userId)
@@ -74,6 +78,10 @@ class AssetController extends Controller
             ->where('remarks', 'Reward Income')
             ->sum('amount');
 
+        $total_withdrawal = DB::table('withdraws')
+            ->where('user_id', $userId)
+            ->sum('amount');
+
         $totalEarned = $dailyRoi + $referralIncome + $levelIncome + $salaryIncome + $rewardIncome;
 
         /* ---------------- RECENT HISTORY (LIMIT 6) ---------------- */
@@ -85,12 +93,14 @@ class AssetController extends Controller
                 'OFT'  => (float) $oftBalance,
             ],
             'income_cards' => [
+                'totalPackage' => $totalPackage,
                 'daily_roi' => $dailyRoi,
                 'referral_income' => $referralIncome,
                 'level_income' => $levelIncome,
                 'salary_income' => $salaryIncome,
                 'reward_income' => $rewardIncome,
                 'total_earned' => $totalEarned,
+                'total_withdrawal' => $total_withdrawal,
             ],
         ]);
     }
@@ -191,7 +201,7 @@ class AssetController extends Controller
                     'user_id'    => $sponsor->id,
                     'user_id_fk'   => $sponsor->telegram_id,
                     'amt'     => $referralIncome,
-                    'comm'     => $refferalToken,
+                    'amount'     => $refferalToken,
                     'remarks'    => 'Referral Income',
                     'rname'     => $user->telegram_id,
                     'ttime' => now(),
@@ -209,6 +219,52 @@ class AssetController extends Controller
             'message' => 'Package purchased successfully'
         ]);
     }
+
+
+
+    public function withdraw(Request $request)
+{
+    $request->validate([
+        'network' => 'required|in:BSC,TRON',
+        'address' => 'required|min:10',
+        'amount'  => 'required|numeric|min:5',
+    ]);
+
+     $userId = $request->user()->id;
+     $user = \App\Models\TelegramUser::find($userId);
+
+    if ($request->amount > $user->usdt_balance) {
+        return response()->json([
+            'message' => 'Insufficient balance'
+        ], 422);
+    }
+
+    $fee = $request->amount * 0.10;
+    $net = $request->amount - $fee;
+
+    // Deduct balance
+    $user->usdt_balance -= $request->amount;
+    $user->save();
+
+    // Store withdrawal
+    DB::table('withdraws')->insert([
+        'user_id'     => $user->id,
+        'user_id_fk'     => $user->telegram_id,
+        'payment_mode'     => $request->network,
+        'account'     => $request->address,
+        'amount'      => $request->amount,
+        'fee'         => $fee,
+        'net_amount'  => $net,
+        'status'      => 'Pending',
+        'wdate'  => now(),
+        'created_at'  => now(),
+    ]);
+
+    return response()->json([
+        'message' => 'Withdrawal request submitted',
+        'net_amount' => $net,
+    ]);
+}
 
 
 
