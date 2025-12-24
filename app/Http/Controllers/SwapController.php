@@ -10,8 +10,8 @@ class SwapController extends Controller
 {
     public function info(Request $request)
     {
-        $user = $request->user();
-
+        $userId = $request->user()->id;
+        $user = \App\Models\TelegramUser::find($userId);
         $oftPrice = DB::table('general_settings')
             ->where('id', 1)
             ->value('oft_price');
@@ -19,7 +19,7 @@ class SwapController extends Controller
         return response()->json([
             'balances' => [
                 'USDT' => (float) $user->usdt_balance,
-                'OFT'  => (float) $user->oft_balance,
+                'OFT'  => (float) $user->balance,
             ],
             'price' => [
                 'OFT_USDT' => (float) $oftPrice,     // 1 OFT = x USDT
@@ -37,7 +37,8 @@ public function submit(Request $request)
         'amount' => 'required|numeric|min:0.0001',
     ]);
 
-    $user = auth()->user();
+   $userId = $request->user()->id;
+   $user = \App\Models\TelegramUser::find($userId);
 
     // Get price from general_settings
     $price = DB::table('general_settings')
@@ -54,11 +55,11 @@ public function submit(Request $request)
         if ($request->from === 'OFT') {
             $receive = $request->amount * $price;
 
-            if ($user->oft_balance < $request->amount) {
+            if ($user->balance < $request->amount) {
                 return response()->json(['message' => 'Insufficient OFT balance'], 422);
             }
 
-            $user->oft_balance -= $request->amount;
+            $user->balance -= $request->amount;
             $user->usdt_balance += $receive;
             $rate = $price;
 
@@ -70,7 +71,7 @@ public function submit(Request $request)
             }
 
             $user->usdt_balance -= $request->amount;
-            $user->oft_balance += $receive;
+            $user->balance += $receive;
             $rate = 1 / $price;
         }
 

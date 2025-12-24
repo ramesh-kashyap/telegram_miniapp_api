@@ -62,7 +62,7 @@ class HistoryController extends Controller
                         'id',
                         'amount',
                         DB::raw("'Buy Package' as type"),
-                        DB::raw("'OFT' as token"),
+                        DB::raw("'USDT' as token"),
                         'created_at'
                     )
                     ->where('user_id', $userId)
