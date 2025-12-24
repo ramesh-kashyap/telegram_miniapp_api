@@ -12,7 +12,7 @@ use App\Http\Controllers\UserTaskController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\AssetController;
 use App\Http\Controllers\SwapController;
-
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,11 +45,13 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/swap/history', [SwapController::class, 'history']);
     Route::get('/swap/info', [SwapController::class, 'info']);
     Route::post('/swap/submit', [SwapController::class, 'submit']);
+    Route::get('/telegram/check-user-status', [ProfileController::class, 'checkUserStatus']);
     // Clicker game routes
     Route::prefix('clicker')->group(function () {
         // Sync user data
         Route::get('/sync', [ClickerController::class, 'sync']);
 
+        
         // Tapping
         Route::post('/tap', [ClickerController::class, 'tap']);
          Route::get('/trr', [ClickerController::class, 'trr']);

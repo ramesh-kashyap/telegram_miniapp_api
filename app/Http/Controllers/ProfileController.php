@@ -40,6 +40,25 @@ class ProfileController extends Controller
     /**
      * Delete the user's account.
      */
+
+    public function checkUserStatus(Request $request)
+{
+    $userId = $request->user()->id;
+  
+    $telegramUser = \App\Models\TelegramUser::where('user_id',  $userId)->first();
+
+    if (!$telegramUser || $telegramUser->status_active !== 'Active') {
+        return response()->json([
+            'success' => false,
+            'message' => 'Telegram account is not active.'
+        ], 400);
+    }
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Task submitted successfully. Waiting for approval.',
+    ]);
+}
     public function destroy(Request $request): RedirectResponse
     {
         $request->validateWithBag('userDeletion', [

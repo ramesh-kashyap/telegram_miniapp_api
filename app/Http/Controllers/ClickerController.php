@@ -160,6 +160,10 @@ class ClickerController extends Controller
         }
     }
 
+
+
+
+
     private function isValidUpgrade($user, $newPack)
     {
         $packValues = [
