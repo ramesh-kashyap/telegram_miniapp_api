@@ -18,7 +18,7 @@ class AuthController extends Controller
             'referred_by' => 'sometimes|nullable',
         ]);
 
-        $validated['balance'] = 5_000;
+        $validated['balance'] = 0;
 
         if ($request->get('referred_by') != null && $request->get('referred_by') != $request->get('telegram_id')) {
             $isUserExists = TelegramUser::where('telegram_id', $request->get('telegram_id'))->exists();

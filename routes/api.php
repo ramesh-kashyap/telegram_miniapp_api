@@ -35,6 +35,8 @@ Route::get('/popups', [PopupController::class, 'index']);
 Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('referred-users', [TelegramUserController::class, 'referredUsers']);
+    Route::get('team/stats', [TelegramUserController::class, 'teamSummary']);
+   Route::get('/team/level-users', [TelegramUserController::class, 'levelUsers']);
     Route::get('/deposit/address', [UserTaskController::class, 'createCryptoAddress']);
     Route::get('/history', [HistoryController::class, 'index']);
     Route::get('/assets', [AssetController::class, 'index']);
