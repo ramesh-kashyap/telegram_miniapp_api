@@ -5,17 +5,28 @@ namespace App\Http\Controllers;
 use App\Models\TelegramUser;
 use App\Models\Task;
 use App\Models\DailyTask;
+use App\Models\Income;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
     public function dashboard()
     {
-        $userCount = TelegramUser::count();
+        $userCount = TelegramUser::whereNotNull('telegram_id')->count();
+        $activeUser = TelegramUser::where('status', 'Active')->count();
+        $pendingUser = TelegramUser::where('status', 'Pending')->count();
+        // dd($activeUser);
         $taskCount = Task::count();
+        $Roiincome = Income::where('remarks', 'Roi Income')->sum('amt');
+        // dd($Roiincome);
         $dailyTaskCount = DailyTask::count();
-        return view('dashboard', compact('userCount', 'taskCount', 'dailyTaskCount'));
+        return view('dashboard', compact('userCount','pendingUser','activeUser', 'taskCount', 'dailyTaskCount'));
     }
+    // public function income()
+    // {
+    //     $Roiincome = Income::where('remarks','Roi Income');
+    //     return view('dashboard', compact('Roiincome'));
+    // }
 
     public function users()
     {

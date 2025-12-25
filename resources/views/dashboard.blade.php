@@ -332,49 +332,185 @@
                         <!-- end page title --> 
 
                         <div class="row">
-                            <div class="col-lg-6 col-xl-3">
-                                <div class="card">
+                             <div class="col-xl-3 col-lg-4">
+                                <div class="card tilebox-one">
                                     <div class="card-body">
-                                        <div class="row align-items-center">
-                                            <div class="col-6">
-                                               <h5 class="text-gray-900 mt-0 truncate font-bold" title="Campaign Sent">Total Users</h5>
-
-                                                <h3 class="my-2 py-1">{{ $userCount }}</h3>
-                               
-                                            </div>
-                                        </div> <!-- end row-->
-                                    </div> <!-- end card-body -->
-                                </div> <!-- end card -->
-                            </div> <!-- end col -->
+                                        <i class='uil uil-users-alt float-end'></i>
+                                        <h6 class="text-uppercase mt-0">Total Users</h6>
+                                        <h2 class="my-2" id="active-users-count">{{$userCount}}</h2>
+                                        <p class="mb-0 text-muted">
+                                            <span class="text-success me-2"><span class="mdi mdi-arrow-up-bold"></span> 5.27%</span>
+                                            <span class="text-nowrap">Since last month</span>  
+                                        </p>
+                                    </div> <!-- end card-body-->
+                                </div>
+                            </div>
         
-                            <div class="col-lg-6 col-xl-3">
-                                <div class="card">
+                             <div class="col-xl-3 col-lg-4">
+                                <div class="card tilebox-one">
                                     <div class="card-body">
-                                        <div class="row align-items-center">
-                                            <div class="col-6">
-                                                  <h5 class="text-gray-900 mt-0 truncate font-bold" title="Campaign Sent">Total Tasks</h5>
-                                                <h3 class="my-2 py-1">{{ $taskCount }}</h3>
-         
-                                            </div>
-                                        </div> <!-- end row-->
-                                    </div> <!-- end card-body -->
-                                </div> <!-- end card -->
-                            </div> <!-- end col -->
+                                        <i class='uil uil-users-alt float-end'></i>
+                                        <h6 class="text-uppercase mt-0">Active Users</h6>
+                                        <h2 class="my-2" id="active-users-count">{{$activeUser}}</h2>
+                                        <p class="mb-0 text-muted">
+                                            <span class="text-success me-2"><span class="mdi mdi-arrow-up-bold"></span> 5.27%</span>
+                                            <span class="text-nowrap">Since last month</span>  
+                                        </p>
+                                    </div> <!-- end card-body-->
+                                </div>
+                            </div>
 
-                            <div class="col-lg-6 col-xl-3">
-                                <div class="card">
+                             <div class="col-xl-3 col-lg-4">
+                                <div class="card tilebox-one">
                                     <div class="card-body">
-                                        <div class="row align-items-center">
-                                            <div class="col-6">
-                                          <h5 class="text-gray-900 mt-0 truncate font-bold" title="Campaign Sent">Total Users</h5>
-                                                <h3 class="my-2 py-1">{{ $dailyTaskCount }}</h3>
-                                            </div>
-                                        </div> <!-- end row-->
-                                    </div> <!-- end card-body -->
-                                </div> <!-- end card -->
-                            </div> <!-- end col -->
+                                        <i class='uil uil-users-alt float-end'></i>
+                                        <h6 class="text-uppercase mt-0">Pending Users</h6>
+                                        <h2 class="my-2" id="active-users-count">{{ $pendingUser }}</h2>
+                                        <p class="mb-0 text-muted">
+                                            <span class="text-success me-2"><span class="mdi mdi-arrow-up-bold"></span> 5.27%</span>
+                                            <span class="text-nowrap">Since last month</span>  
+                                        </p>
+                                    </div> <!-- end card-body-->
+                                </div>
+                            </div>
+                             <div class="col-xl-3 col-lg-4">
+                                <div class="card tilebox-one">
+                                    <div class="card-body">
+                                        <i class='uil uil-users-alt float-end'></i>
+                                        <h6 class="text-uppercase mt-0">Inactive Users</h6>
+                                        <h2 class="my-2" id="active-users-count">1</h2>
+                                        <p class="mb-0 text-muted">
+                                            <span class="text-success me-2">
+                                                <span class="mdi mdi-arrow-up-bold"></span> 5.27%</span>
+                                            <span class="text-nowrap">Since last month</span>  
+                                        </p>
+                                    </div> <!-- end card-body-->
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-4">
+                                <div class="card tilebox-one">
+                                    <div class="card-body">
+                                        <i class='uil uil-users-alt float-end'></i>
+                                        <h6 class="text-uppercase mt-0">Active Users</h6>
+                                        <h2 class="my-2" id="active-users-count">121</h2>
+                                        <p class="mb-0 text-muted">
+                                            <span class="text-success me-2"><span class="mdi mdi-arrow-up-bold"></span> 5.27%</span>
+                                            <span class="text-nowrap">Since last month</span>  
+                                        </p>
+                                    </div> <!-- end card-body-->
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-4">
+                                <div class="card tilebox-one">
+                                    <div class="card-body">
+                                        <i class='uil uil-users-alt float-end'></i>
+                                        <h6 class="text-uppercase mt-0">Today's Registration</h6>
+                                        <h2 class="my-2" id="active-users-count">121</h2>
+                                        <p class="mb-0 text-muted">
+                                            <span class="text-success me-2"><span class="mdi mdi-arrow-up-bold"></span> 5.27%</span>
+                                            <span class="text-nowrap">Since last month</span>  
+                                        </p>
+                                    </div> <!-- end card-body-->
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-4">
+                                <div class="card tilebox-one">
+                                    <div class="card-body">
+                                        <i class='uil uil-users-alt float-end'></i>
+                                        <h6 class="text-uppercase mt-0">Today's Activity</h6>
+                                        <h2 class="my-2" id="active-users-count">121</h2>
+                                        <p class="mb-0 text-muted">
+                                            <span class="text-success me-2"><span class="mdi mdi-arrow-up-bold"></span> 5.27%</span>
+                                            <span class="text-nowrap">Since last month</span>  
+                                        </p>
+                                    </div> <!-- end card-body-->
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-4">
+                                <div class="card tilebox-one">
+                                    <div class="card-body">
+                                        <i class='uil uil-users-alt float-end'></i>
+                                        <h6 class="text-uppercase mt-0">Total Business</h6>
+                                        <h2 class="my-2" id="active-users-count">121</h2>
+                                        <p class="mb-0 text-muted">
+                                            <span class="text-success me-2"><span class="mdi mdi-arrow-up-bold"></span> 5.27%</span>
+                                            <span class="text-nowrap">Since last month</span>  
+                                        </p>
+                                    </div> <!-- end card-body-->
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-4">
+                                <div class="card tilebox-one">
+                                    <div class="card-body">
+                                        <i class='uil uil-users-alt float-end'></i>
+                                        <h6 class="text-uppercase mt-0">Pending Deposit</h6>
+                                        <h2 class="my-2" id="active-users-count">121</h2>
+                                        <p class="mb-0 text-muted">
+                                            <span class="text-success me-2"><span class="mdi mdi-arrow-up-bold"></span> 5.27%</span>
+                                            <span class="text-nowrap">Since last month</span>  
+                                        </p>
+                                    </div> <!-- end card-body-->
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-4">
+                                <div class="card tilebox-one">
+                                    <div class="card-body">
+                                        <i class='uil uil-users-alt float-end'></i>
+                                        <h6 class="text-uppercase mt-0">Daily Roi</h6>
+                                        <h2 class="my-2" id="active-users-count">121</h2>
+                                        <p class="mb-0 text-muted">
+                                            <span class="text-success me-2"><span class="mdi mdi-arrow-up-bold"></span> 5.27%</span>
+                                            <span class="text-nowrap">Since last month</span>  
+                                        </p>
+                                    </div> <!-- end card-body-->
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-4">
+                                <div class="card tilebox-one">
+                                    <div class="card-body">
+                                        <i class='uil uil-users-alt float-end'></i>
+                                        <h6 class="text-uppercase mt-0">Direct Income</h6>
+                                        <h2 class="my-2" id="active-users-count">121</h2>
+                                        <p class="mb-0 text-muted">
+                                            <span class="text-success me-2"><span class="mdi mdi-arrow-up-bold"></span> 5.27%</span>
+                                            <span class="text-nowrap">Since last month</span>  
+                                        </p>
+                                    </div> <!-- end card-body-->
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-4">
+                                <div class="card tilebox-one">
+                                    <div class="card-body">
+                                        <i class='uil uil-users-alt float-end'></i>
+                                        <h6 class="text-uppercase mt-0">Referral Income</h6>
+                                        <h2 class="my-2" id="active-users-count">121</h2>
+                                        <p class="mb-0 text-muted">
+                                            <span class="text-success me-2"><span class="mdi mdi-arrow-up-bold"></span> 5.27%</span>
+                                            <span class="text-nowrap">Since last month</span>  
+                                        </p>
+                                    </div> <!-- end card-body-->
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-4">
+                                <div class="card tilebox-one">
+                                    <div class="card-body">
+                                        <i class='uil uil-users-alt float-end'></i>
+                                        <h6 class="text-uppercase mt-0">Salary Income</h6>
+                                        <h2 class="my-2" id="active-users-count">121</h2>
+                                        <p class="mb-0 text-muted">
+                                            <span class="text-success me-2"><span class="mdi mdi-arrow-up-bold"></span> 5.27%</span>
+                                            <span class="text-nowrap">Since last month</span>  
+                                        </p>
+                                    </div> <!-- end card-body-->
+                                </div>
+                            </div>
+
+
+
+
                         </div>
                         <!-- end row -->
+                         
 
         <!-- /End-bar -->
 

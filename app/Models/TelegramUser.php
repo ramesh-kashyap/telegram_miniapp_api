@@ -23,6 +23,34 @@ class TelegramUser extends Authenticatable
         'last_login_date' => 'datetime',
         'last_daily_booster_use' => 'datetime',
     ];
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'email',
+        'password',
+        'username',
+        'ton_wallet',
+        'balance',
+        'status',
+        'oft_wallet',
+        'usdt_balance',
+        'earn_per_tap',
+        'available_energy',
+        'max_energy',
+        'multi_tap_level',
+        'energy_limit_level',
+        'booster_pack_2x',
+        'booster_pack_3x',
+        'booster_pack_7x',
+        'booster_pack_active_until',
+        'login_streak',
+        'daily_booster_user',
+        'last_daily_booster_use',
+        'production_per_hour',
+        'referred_by',
+        'level_id',
+        'remember_token',
+    ];
 
     public function referrals()
     {
