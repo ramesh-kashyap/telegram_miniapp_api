@@ -1,37 +1,152 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Create Daily Task') }}
-        </h2>
-    </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    <h1 class="text-2xl font-bold mb-4">Create New Daily Task</h1>
-                    <form action="{{ route('daily_tasks.store') }}" method="POST">
-                        @csrf
-                        <div class="mb-4">
-                            <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name:</label>
-                            <input type="text" name="name" id="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
-                        </div>
-                        <div class="mb-4">
-                            <label for="description" class="block text-gray-700 text-sm font-bold mb-2">Description:</label>
-                            <textarea name="description" id="description" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required></textarea>
-                        </div>
-                        <div class="mb-4">
-                            <label for="required_login_streak" class="block text-gray-700 text-sm font-bold mb-2">Required Login Streak:</label>
-                            <input type="number" name="required_login_streak" id="required_login_streak" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required min="1" max="10">
-                        </div>
-                        <div class="mb-4">
-                            <label for="reward_coins" class="block text-gray-700 text-sm font-bold mb-2">Reward Coins:</label>
-                            <input type="number" name="reward_coins" id="reward_coins" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
-                        </div>
-                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Create Daily Task</button>
-                    </form>
-                </div>
-            </div>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #f3f4f6;
+    }
+
+    .page-wrapper {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 900px;
+        background: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        overflow: hidden;
+    }
+
+    .card-header {
+        padding: 20px 30px;
+        border-bottom: 1px solid #e5e7eb;
+        texttext-align: center;
+    }
+
+    .card-header h2 {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 600;
+        color: #1f2937;
+        text-align: center;
+    }
+
+    .card-body {
+        padding: 30px;
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 20px;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .form-row label {
+        font-size: 14px;
+        font-weight: 600;
+        color: #374151;
+    }
+
+    .form-row input,
+    .form-row textarea {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #d1d5db;
+        border-radius: 5px;
+        font-size: 14px;
+        outline: none;
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-row textarea {
+        resize: vertical;
+    }
+
+    .form-row input:focus,
+    .form-row textarea:focus {
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 2px rgba(59,130,246,0.2);
+    }
+
+    .form-submit {
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .form-submit button {
+        background-color: #16a34a;
+        color: #ffffff;
+        border: none;
+        padding: 10px 40px;
+        font-size: 15px;
+        font-weight: 600;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    .form-submit button:hover {
+        background-color: #15803d;
+    }
+
+    @media (max-width: 640px) {
+        .form-row {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="page-wrapper">
+    <div class="card">
+
+        <!-- Header -->
+        <div class="card-header">
+            <h2>Create New Daily Task</h2>
         </div>
+
+        <!-- Form -->
+        <div class="card-body">
+            <form action="{{ route('store_daily_task') }}" method="POST">
+                @csrf
+
+                <div class="form-row">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" required>
+                </div>
+
+                <div class="form-row">
+                    <label for="description">Description</label>
+                    <textarea name="description" id="description" rows="4" required></textarea>
+                </div>
+
+                <div class="form-row">
+                    <label for="required_login_streak">Login Streak</label>
+                    <input type="number" name="required_login_streak" min="1" max="10" required>
+                </div>
+
+                <div class="form-row">
+                    <label for="reward_coins">Reward Coins</label>
+                    <input type="number" name="reward_coins" required>
+                </div>
+
+                <div class="form-submit">
+                    <button type="submit">Submit</button>
+                </div>
+
+            </form>
+        </div>
+
     </div>
-</x-app-layout>
+</div>
+
+
+

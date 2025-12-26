@@ -90,4 +90,15 @@ class UserTaskController extends Controller
             'message' => "You have successfully claimed $task->reward_coins from $task->name."
         ]);
     }
+
+
+
+ public function changePassword()
+    {
+        return view('change_password'); 
+        // resources/views/change_password.blade.php
+    }
+  
+
+
 }

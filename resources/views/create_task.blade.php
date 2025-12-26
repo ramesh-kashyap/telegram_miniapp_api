@@ -1,33 +1,142 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Create Task') }}
-        </h2>
-    </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    <h1 class="text-2xl font-bold mb-4">Create New Task</h1>
-                    <form action="{{ route('store_task') }}" method="POST">
-                        @csrf
-                        <div class="mb-4">
-                            <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name:</label>
-                            <input type="text" name="name" id="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
-                        </div>
-                        <div class="mb-4">
-                            <label for="description" class="block text-gray-700 text-sm font-bold mb-2">Description:</label>
-                            <textarea name="description" id="description" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required></textarea>
-                        </div>
-                        <div class="mb-4">
-                            <label for="reward_coins" class="block text-gray-700 text-sm font-bold mb-2">Reward Coins:</label>
-                            <input type="number" name="reward_coins" id="reward_coins" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
-                        </div>
-                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Create Task</button>
-                    </form>
-                </div>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #f3f4f6;
+    }
+
+    .page {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 480px;
+    }
+
+    .card {
+        background: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        overflow: hidden;
+    }
+
+    .card-header {
+        padding: 18px 20px;
+        border-bottom: 1px solid #e5e7eb;
+        text-align: center;
+    }
+
+    .card-header h1 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 600;
+        color: #1f2937;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 16px;
+    }
+
+    .form-group label {
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+        color: #374151;
+        margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 10px 12px;
+        font-size: 14px;
+        border: 1px solid #d1d5db;
+        border-radius: 5px;
+        outline: none;
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-group textarea {
+        resize: vertical;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 2px rgba(59,130,246,0.25);
+    }
+
+    .form-submit {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .form-submit button {
+        background-color: #2563eb;
+        color: #ffffff;
+        border: none;
+        padding: 10px 26px;
+        font-size: 14px;
+        font-weight: 600;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    .form-submit button:hover {
+        background-color: #1d4ed8;
+    }
+</style>
+
+<div class="page">
+    <div class="container">
+
+        <div class="card">
+
+            <!-- Header -->
+            <div class="card-header">
+                <h1>Create New Task</h1>
             </div>
+
+            <!-- Form -->
+            <div class="card-body">
+                <form action="{{ route('store_task') }}" method="POST">
+                    @csrf
+
+                    <div class="form-group">
+                        <label>Task Name</label>
+                        <input type="text" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea name="description" rows="3" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Reward Coins</label>
+                        <input type="number" name="reward_coins" required>
+                    </div>
+
+                    <div class="form-submit">
+                        <button type="submit">Create Task</button>
+                    </div>
+
+                </form>
+            </div>
+
         </div>
+
     </div>
-</x-app-layout>
+</div>
+

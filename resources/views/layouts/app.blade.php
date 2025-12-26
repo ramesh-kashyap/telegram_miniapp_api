@@ -105,6 +105,60 @@
                         </li>
 
 
+
+          <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#sidebarEcommerc" aria-expanded="false" aria-controls="sidebarEcommerce" class="side-nav-link collapsed">
+                                <i class="uil-calender"></i>
+                                <span> Tasks </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarEcommerc" style="">
+                                <ul class="side-nav-second-level">
+                                    <li>
+                                        <a href="{{ route('tasks') }}">Task List</a>
+                                    </li>
+
+                                      <li>
+                                        <a href="{{ route('create_task') }}">Create  Task List</a>
+                                    </li>
+
+                                    
+                                    
+                                </ul>
+                            </div>
+                        </li>
+
+
+        
+          <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#sidebarEcommer" aria-expanded="false" aria-controls="sidebarEcommerce" class="side-nav-link collapsed">
+                                <i class="uil-calender"></i>
+                                <span> Daily Task </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarEcommer" style="">
+                                <ul class="side-nav-second-level">
+                                    <li>
+                                        <a href="{{ route('daily_tasks') }}">Daily Task List</a>
+                                    </li>
+
+
+                                    <li>
+                                        <a href="{{ route('create_daily_task') }}">Create Daily Task</a>
+                                    </li>
+
+                                    
+                                </ul>
+                            </div>
+                        </li>
+
+
+
+
+
+
+
+
       
       
                         <li class="side-nav-item">
@@ -123,7 +177,7 @@
                                         <a href="{{ route('reject.deposite') }}">Rejected Deposite</a>
                                     </li>
                                       <li>
-                                        <a href="apps-email-read.html">Approval Deposite</a>
+                                        <a href="{{ route('approval.deposite') }}">Approval Deposite</a>
                                     </li>
                                 </ul>
                             </div>
@@ -144,13 +198,13 @@
                             <div class="collapse " id="sidebarEmai" style="">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="apps-email-inbox.html">Pending  Withdrawal</a>
+                                        <a href="{{ route('pending.withdrawal') }}">Pending  Withdrawal</a>
                                     </li>
                                     <li>
-                                        <a href="apps-email-read.html">Rejected Withdrawal</a>
+                                        <a href="{{ route('reject.withdrawal') }}">Rejected Withdrawal</a>
                                     </li>
                                       <li>
-                                        <a href="apps-email-read.html">Approval Withdrawal</a>
+                                        <a href="{{ route('approval.withdrawal') }}">Approval Withdrawal</a>
                                     </li>
                                 </ul>
                             </div>
@@ -210,15 +264,12 @@
 
                         
       <li class="side-nav-item">
-    <a data-bs-toggle="collapse" href="#dashboard1" aria-expanded="false" aria-controls="dashboard1" class="side-nav-link">
+    <a href="{{ route('change.password') }}" aria-expanded="false" aria-controls="dashboard1" class="side-nav-link">
         <i class="uil-lock"></i>
         <span> Change Password</span>
     </a>
 
       </li>
-          
-
-
 
 
             <li class="side-nav-item">
@@ -326,11 +377,11 @@
                         <!-- start page title -->
                           
                         <!-- end page title --> 
-                 <main>
+                 <article>
 
                         @yield('content')
 
-                    </main>
+                    </article>
                         
                     
 
