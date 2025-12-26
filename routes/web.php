@@ -20,16 +20,16 @@ Route::get('/', function () {
  * Dashboard WITHOUT login
  */
 
-Route::get('/dashboard', function () {
-    return view('dashboard'); // ✅ dashboard.blade.php
-})->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard'); // ✅ dashboard.blade.php
+// })->name('dashboard');
 
 
 
 
 
+Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 Route::get('/roi-income', [IncomeController::class, 'roiIncome'])->name('roi.income');
-
 Route::get('/daily-referral-income', [IncomeController::class, 'dailyReferralIncome'])->name('daily.referral.income');
     
 Route::get('/level-income', [IncomeController::class, 'levelIncome']) ->name('level.income');

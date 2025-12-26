@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\TelegramUser;
 use App\Models\Task;
 use App\Models\DailyTask;
+use App\Models\Investment;
 use App\Models\Income;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -15,12 +17,16 @@ class AdminController extends Controller
         $userCount = TelegramUser::whereNotNull('telegram_id')->count();
         $activeUser = TelegramUser::where('status', 'Active')->count();
         $pendingUser = TelegramUser::where('status', 'Pending')->count();
+        $todaysRegistrations = TelegramUser::whereDate('created_at', Carbon::today())->count();
+        $pendingDeposit = Investment::whereDate('created_at', Carbon::today())->where('status', 'Pending')->sum('amount');
         // dd($activeUser);
         $taskCount = Task::count();
         $Roiincome = Income::where('remarks', 'Roi Income')->sum('amt');
+        $Directincome = Income::where('remarks', 'Direct Income')->sum('amt');
         // dd($Roiincome);
         $dailyTaskCount = DailyTask::count();
-        return view('dashboard', compact('userCount','pendingUser','activeUser', 'taskCount', 'dailyTaskCount'));
+        // dd($userCount);
+        return view('dashboard', compact('userCount','pendingUser','todaysRegistrations','activeUser', 'taskCount', 'dailyTaskCount','pendingDeposit','Roiincome','Directincome'));
     }
     // public function income()
     // {
