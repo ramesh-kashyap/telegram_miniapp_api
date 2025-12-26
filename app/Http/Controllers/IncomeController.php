@@ -21,8 +21,7 @@ class IncomeController extends Controller
         return view('income.roi-income', compact('roiIncomes'));
     }
     public function depositReport(){
-     
-        $depositReport = Investment::paginate(20);
+         $depositReport = Investment::with('user')->paginate(20);
         return view('deposit-report', compact('depositReport'));
     }
     public function addfundreport(){
@@ -32,16 +31,16 @@ class IncomeController extends Controller
     }
 
      public function pendingWithdraw(){     
-        $withdrawReport = Withdraw::where('status','Pending')->get();
+        $withdrawReport = Withdraw::where('status','Pending')->paginate(10);
         return view('wallet.pending-withdraw', compact('withdrawReport'));
     }
     public function ApprovedWithdraw(){     
-        $ApprovedReport = Withdraw::where('status','Approved')->get();
+        $ApprovedReport = Withdraw::where('status','Approved')->paginate(10);
         return view('wallet.approved-withdraw', compact('ApprovedReport'));
     }
     public function FailedWithdraw(){
      
-        $FailedReport = Withdraw::where('status','Failed')->get();
+        $FailedReport = Withdraw::where('status','Failed')->paginate(10);
         return view('wallet.failed-withdraw', compact('FailedReport'));
     }
 

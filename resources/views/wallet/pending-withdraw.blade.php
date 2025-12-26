@@ -64,6 +64,7 @@
                                                                 <td colspan="4" class="text-center">No Pending Users Found</td>
                                                             </tr>
                                                         @endforelse
+                                                        {{ $withdrawReport->links() }}
                                                         </tbody>
                                                     </table>
                                                 </div> <!-- end table-responsive-->                     

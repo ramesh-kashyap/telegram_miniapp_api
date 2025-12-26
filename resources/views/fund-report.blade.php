@@ -23,6 +23,7 @@
                                                     <table class="table table-centered table-borderless mb-0">
                                                         <thead>
                                                             <tr>
+                                                                <th>S.No</th>
                                                                 <th>UserName</th>
                                                                 <th>User Id</th>
                                                                 <th>Amount</th>
@@ -65,6 +66,7 @@
                                                                 <td colspan="4" class="text-center">No Pending Users Found</td>
                                                             </tr>
                                                         @endforelse
+                                                        {{ $fundReport->links() }}
                                                         </tbody>
                                                     </table>
                                                 </div> <!-- end table-responsive-->                     

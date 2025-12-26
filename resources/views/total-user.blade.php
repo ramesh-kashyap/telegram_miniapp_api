@@ -10,29 +10,34 @@
                                 <div class="card">
                                     <div class="card-body">
 
-                                        <h4 class="header-title">Striped rows</h4>
+                                        <!-- <h4 class="header-title">Striped rows</h4>
                                         <p class="text-muted font-14">
                                             Use <code>.table-striped</code> to add zebra-striping to any table row
                                             within the <code>&lt;tbody&gt;</code>.
-                                        </p>
+                                        </p> -->
                                         <div class="tab-content">
                                             <div class="tab-pane show active" id="striped-rows-preview">
                                                 <div class="table-responsive-sm">
                                                     <table class="table table-striped table-centered mb-0">
                                                         <thead>
                                                             <tr>
-                                                                <th>User</th>
+                                                                <th>S.No</th>
+                                                                <th>Name</th>
+                                                                <th>Telegram Id</th>
                                                                 <th>Account No.</th>
                                                                 <th>Balance</th>
                                                                 <th>Email</th>
                                                                 <th>Status</th>
                                                                 <th>Last Activity</th>
-                                                                <th>Action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+                                                            @php
+                                                                $i = ($totalUsers->currentPage() - 1) * $totalUsers->perPage();
+                                                            @endphp
                                                             @forelse($totalUsers as $user)
                                                             <tr>
+                                                                <td>{{ ++$i }}</td>
                                                                 <td class="table-user">
                                                                    {{ $user->first_name }} {{ $user->last_name }}
                                                                 </td>
@@ -51,6 +56,7 @@
                                                                 <td colspan="4" class="text-center">No Pending Users Found</td>
                                                             </tr>
                                                         @endforelse
+                                                        {{ $totalUsers->links() }}
                                                         </tbody>
                                                     </table>
                                                 </div>                   

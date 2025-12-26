@@ -34,16 +34,16 @@ class AdminController extends Controller
     //     return view('dashboard', compact('Roiincome'));
     // }
     public function activeuser(){
-         $activeUsers = TelegramUser::where('status' ,'Active')->get();
+         $activeUsers = TelegramUser::where('status' ,'Active')->paginate(10);
         return view('active_user', compact('activeUsers'));
     }
     public function pendinguser(){
-         $pendingUsers = TelegramUser::where('status' ,'Pending')->get();
+         $pendingUsers = TelegramUser::where('status' ,'Pending')->paginate(10);
         return view('pending-user', compact('pendingUsers'));
     }
 
      public function totaluser(){
-         $totalUsers = TelegramUser::get();
+         $totalUsers = TelegramUser::paginate(10);
         //  dd($totalUsers);
         return view('total-user', compact('totalUsers'));
     }

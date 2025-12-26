@@ -24,6 +24,8 @@
                                                     <table class="table table-centered table-borderless mb-0">
                                                         <thead>
                                                             <tr>
+                                                                <th>S.No</th>
+                                                                <th>Name</th>
                                                                 <th>Plan</th>
                                                                 <th>User Id</th>
                                                                 <th>Amount</th>
@@ -34,8 +36,12 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+                                                             @php
+                                                                $i = ($depositReport->currentPage() - 1) * $depositReport->perPage();
+                                                            @endphp
                                                              @forelse($depositReport as $report)
-                                                            <tr>
+                                                            <tr><td>{{ ++$i }}</td>
+                                                                <td>{{ $report->user->name ?? '' }}</td>
                                                                 <td>{{ $report->plan }}</td>
                                                                 <td>{{ $report->user_id }}</td>
                                                                 <td>{{ $report->amount }}</td>

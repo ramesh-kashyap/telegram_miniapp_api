@@ -34,8 +34,9 @@
                                                     <table class="table table-striped table-centered mb-0">
                                                         <thead>
                                                             <tr>
-                                                                <th>User</th>
-                                                                <th>Account No.</th>
+                                                                <th>S.No</th>
+                                                                <th>Name</th>
+                                                                <th>Telegram Id</th>
                                                                 <th>Balance</th>
                                                                 <th>Email</th>
                                                                 <th>Status</th>
@@ -44,8 +45,12 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+                                                            @php
+                                                                $i = ($activeUsers->currentPage() - 1) * $activeUsers->perPage();
+                                                            @endphp
                                                             @forelse($activeUsers as $user)
                                                             <tr>
+                                                                <td>{{ ++$i }}</td>
                                                                 <td class="table-user">
                                                                     <!-- <img src="assets/images/users/avatar-2.jpg" alt="table-user" class="me-2 rounded-circle"> -->
                                                                    {{ $user->first_name }} {{ $user->last_name }}
