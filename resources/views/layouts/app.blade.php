@@ -146,7 +146,7 @@
                                         <a href="{{route('pending-withdraw')}}">Pending  Withdrawal</a>
                                     </li>
                                     <li>
-                                        <a href="apps-email-read.html">Rejected Withdrawal</a>
+                                        <a href="{{route('failed-withdraw')}}">Rejected Withdrawal</a>
                                     </li>
                                       <li>
                                         <a href="{{route('approved-withdraw')}}">Approval Withdrawal</a>

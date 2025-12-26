@@ -46,7 +46,7 @@ Route::get('/pending-user', [AdminController::class, 'pendinguser'])->name('pend
  Route::get('/pending-withdraw', [IncomeController::class, 'pendingWithdraw'])->name('pending-withdraw');
 
  Route::get('/approved-withdraw', [IncomeController::class, 'ApprovedWithdraw'])->name('approved-withdraw');
-
+  Route::get('/failed-withdraw', [IncomeController::class, 'FailedWithdraw'])->name('failed-withdraw');
  Route::get('/fund-report', [IncomeController::class, 'addfundreport'])->name('fund-report');
  Route::post('/fund/status-update', [IncomeController::class, 'fundStatus'])->name('fund-statusUpdate');
 

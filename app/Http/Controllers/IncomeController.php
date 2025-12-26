@@ -31,15 +31,18 @@ class IncomeController extends Controller
         return view('fund-report', compact('fundReport'));
     }
 
-     public function pendingWithdraw(){
-     
+     public function pendingWithdraw(){     
         $withdrawReport = Withdraw::where('status','Pending')->get();
         return view('wallet.pending-withdraw', compact('withdrawReport'));
     }
-    public function ApprovedWithdraw(){
-     
+    public function ApprovedWithdraw(){     
         $ApprovedReport = Withdraw::where('status','Approved')->get();
         return view('wallet.approved-withdraw', compact('ApprovedReport'));
+    }
+    public function FailedWithdraw(){
+     
+        $FailedReport = Withdraw::where('status','Failed')->get();
+        return view('wallet.failed-withdraw', compact('FailedReport'));
     }
 
      public function updateStatus(Request $request)
