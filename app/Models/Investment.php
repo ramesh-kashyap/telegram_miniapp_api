@@ -24,4 +24,8 @@ class Investment extends Model
         'walletType',
         'month',
     ];
+    public function user()
+{
+    return $this->belongsTo(TelegramUser::class, 'user_id', 'id');
+}
 }

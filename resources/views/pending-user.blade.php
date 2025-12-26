@@ -3,18 +3,18 @@
 @section('content')
 <div class="max-w-7xl mx-auto bg-white p-6 rounded-lg shadow" style="padding-top: 10px; margin-top: 10px;">
     <h2 class="text-2xl font-semibold mb-4" style="margin-left: 10px;margin-top: 10px">
-        active user
+        Pending User
     </h2>
-     <div class="row">
+      <div class="row">
                             <div class="col-xl-12">
                                 <div class="card">
                                     <div class="card-body">
 
-                                        <h4 class="header-title">Striped rows</h4>
+                                        <!-- <h4 class="header-title">Striped rows</h4>
                                         <p class="text-muted font-14">
                                             Use <code>.table-striped</code> to add zebra-striping to any table row
                                             within the <code>&lt;tbody&gt;</code>.
-                                        </p>
+                                        </p> -->
 
                                         <!-- <ul class="nav nav-tabs nav-bordered mb-3">
                                             <li class="nav-item">
@@ -46,12 +46,13 @@
                                                         </thead>
                                                         <tbody>
                                                             @php
-                                                                $i = ($activeUsers->currentPage() - 1) * $activeUsers->perPage();
+                                                                $i = ($pendingUsers->currentPage() - 1) * $pendingUsers->perPage();
                                                             @endphp
-                                                            @forelse($activeUsers as $user)
+                                                            @forelse($pendingUsers as $user)
                                                             <tr>
                                                                 <td>{{ ++$i }}</td>
                                                                 <td class="table-user">
+                                                                     
                                                                     <!-- <img src="assets/images/users/avatar-2.jpg" alt="table-user" class="me-2 rounded-circle"> -->
                                                                    {{ $user->first_name }} {{ $user->last_name }}
                                                                 </td>
@@ -66,12 +67,12 @@
                                                                 </td>
                                                             </tr>
                                                             @empty
-    <tr>
-        <td colspan="4" class="text-center">No Pending Users Found</td>
-    </tr>
-@endforelse
+                                                                <tr>
+                                                                    <td colspan="4" class="text-center">No Pending Users Found</td>
+                                                                </tr>
+                                                            @endforelse
+                                                            {{ $pendingUsers->links()}}
                                                         </tbody>
-                                                        {{ $activeUsers->links() }}
                                                     </table>
                                                 </div> <!-- end table-responsive-->                     
                                             </div> 
@@ -81,7 +82,6 @@
                                 </div> <!-- end card -->
                             </div><!-- end col-->
                         </div>
-
     
 </div>
 @endsection

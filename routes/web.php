@@ -35,38 +35,25 @@ Route::get('/daily-referral-income', [IncomeController::class, 'dailyReferralInc
     
 Route::get('/level-income', [IncomeController::class, 'levelIncome']) ->name('level.income');
 
-Route::get('/active-user', function () {
-    return view('active_user'); // ✅ active_user.blade.php
-})->name('active.user');
+Route::get('/active-user', [AdminController::class, 'activeuser'])->name('active.user');
+Route::get('/total-user', [AdminController::class, 'totaluser'])->name('total.user');
 
 
-Route::get('/pending-user', function () {
-    return view('pending_user'); // ✅ pending_user.blade.php
-})->name('pending.user');
+Route::get('/pending-user', [AdminController::class, 'pendinguser'])->name('pending.user');
 
+ Route::get('/deposit-report', [IncomeController::class,'depositReport'])->name('deposit-report');
+ Route::post('/deposit/status-update', [IncomeController::class, 'updateStatus'])->name('deposit-statusUpdate');
 
+ Route::get('/pending-withdraw', [IncomeController::class, 'pendingWithdraw'])->name('pending-withdraw');
 
-Route::get('/pending-deposite', [IncomeController::class, 'pendingDeposit']) ->name('pending.deposite');
+ Route::get('/approved-withdraw', [IncomeController::class, 'ApprovedWithdraw'])->name('approved-withdraw');
+  Route::get('/failed-withdraw', [IncomeController::class, 'FailedWithdraw'])->name('failed-withdraw');
+    Route::get('/add-funds', [IncomeController::class, 'addfund'])->name('add-funds');
+ Route::get('/fund-report', [IncomeController::class, 'addfundreport'])->name('fund-report');
+ Route::post('/fund/status-update', [IncomeController::class, 'fundStatus'])->name('fund-statusUpdate');
+  Route::post('/add-funds-store', [IncomeController::class, 'buyFundsStore'])->name('admin.buy.funds');
 
-Route::get('/reject-deposite', [IncomeController::class, 'rejectDeposit']) ->name('reject.deposite');
-
-Route::get('/approval-deposite', [IncomeController::class, 'approveDeposit']) ->name('approval.deposite');
-
-
-
-Route::get('/pending-withdrawal', [IncomeController::class, 'pendingWithdrawal']) ->name('pending.withdrawal');
-
-Route::get('/reject-withdrawal', [IncomeController::class, 'rejectWithdrawal']) ->name('reject.withdrawal');
-
-Route::get('/approval-withdrawal', [IncomeController::class, 'approvalWithdrawal']) ->name('approval.withdrawal');
-
-
-Route::get('/change-password', [UserTaskController::class, 'changePassword']) ->name('change.password');
-
-
-
-
-
+//   Route::post('/fund/status-update', [IncomeController::class, 'fundStatus'])->name('fund-statusUpdate');
 /*
 |--------------------------------------------------------------------------
 | Protected Routes (LOGIN REQUIRED)

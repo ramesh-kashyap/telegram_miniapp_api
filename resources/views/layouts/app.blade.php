@@ -91,6 +91,9 @@
                             <div class="collapse" id="sidebarEcommerce" style="">
                                 <ul class="side-nav-second-level">
                                     <li>
+                                        <a href="{{ route('total.user') }}">Total User</a>
+                                    </li>
+                                    <li>
                                         <a href="{{ route('active.user') }}">Active User</a>
                                     </li>
 
@@ -103,6 +106,12 @@
                                 </ul>
                             </div>
                         </li>
+
+
+
+
+
+
 
 
 
@@ -171,10 +180,10 @@
                             <div class="collapse " id="sidebarEma" style="">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="{{ route('pending.deposite') }}">Pending Deposite</a>
+                                        <a href="{{ route('deposit-report') }}">Deposite Report</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('reject.deposite') }}">Rejected Deposite</a>
+                                        <a href="{{ route('fund-report') }}">Fund Report</a>
                                     </li>
                                       <li>
                                         <a href="{{ route('approval.deposite') }}">Approval Deposite</a>
