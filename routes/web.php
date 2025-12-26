@@ -47,10 +47,12 @@ Route::get('/pending-user', [AdminController::class, 'pendinguser'])->name('pend
 
  Route::get('/approved-withdraw', [IncomeController::class, 'ApprovedWithdraw'])->name('approved-withdraw');
   Route::get('/failed-withdraw', [IncomeController::class, 'FailedWithdraw'])->name('failed-withdraw');
+    Route::get('/add-funds', [IncomeController::class, 'addfund'])->name('add-funds');
  Route::get('/fund-report', [IncomeController::class, 'addfundreport'])->name('fund-report');
  Route::post('/fund/status-update', [IncomeController::class, 'fundStatus'])->name('fund-statusUpdate');
+  Route::post('/add-funds-store', [IncomeController::class, 'buyFundsStore'])->name('admin.buy.funds');
 
-  Route::post('/fund/status-update', [IncomeController::class, 'fundStatus'])->name('fund-statusUpdate');
+//   Route::post('/fund/status-update', [IncomeController::class, 'fundStatus'])->name('fund-statusUpdate');
 /*
 |--------------------------------------------------------------------------
 | Protected Routes (LOGIN REQUIRED)

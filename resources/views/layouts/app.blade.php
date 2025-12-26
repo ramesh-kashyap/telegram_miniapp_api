@@ -124,6 +124,9 @@
                                     <li>
                                         <a href="{{ route('fund-report') }}">Fund Report</a>
                                     </li>
+                                    <li>
+                                        <a href="{{ route('add-funds') }}">Add Funds</a>
+                                    </li>
                                 </ul>
                             </div>
                         </li>

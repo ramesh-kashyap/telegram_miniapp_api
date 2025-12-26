@@ -43,6 +43,36 @@ class IncomeController extends Controller
         $FailedReport = Withdraw::where('status','Failed')->paginate(10);
         return view('wallet.failed-withdraw', compact('FailedReport'));
     }
+     public function addfund(){
+        return view('wallet.add-fund');
+    }
+        public function buyFundsStore(Request $request)       
+        {
+            //  dd($request);
+            $request->validate([
+                'user_id' => 'required|numeric',
+                'amount'  => 'required|numeric|min:1',
+
+            ]);
+
+            // check user exists in TelegramUser table
+            $user = TelegramUser::where('telegram_id', $request->user_id)->first();
+
+            if (!$user) {
+                return back()->withErrors(['user_id' => 'User not found in TelegramUser table']);
+            }
+
+            // Save record
+            BuyFund::create([
+                'user_id' => $request->user_id,
+                'amount'  => $request->amount,
+                'txn_no'  => 'TXN' . time(),   // generate transaction id
+                'type' =>$request->type,
+            ]);
+
+            return back()->with('success', 'Funds added successfully');
+        }
+
 
      public function updateStatus(Request $request)
             {
