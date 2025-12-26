@@ -34,24 +34,23 @@ Route::get('/daily-referral-income', [IncomeController::class, 'dailyReferralInc
     
 Route::get('/level-income', [IncomeController::class, 'levelIncome']) ->name('level.income');
 
-Route::get('/active-user', function () {
-    return view('active_user'); // ✅ active_user.blade.php
-})->name('active.user');
+Route::get('/active-user', [AdminController::class, 'activeuser'])->name('active.user');
+Route::get('/total-user', [AdminController::class, 'totaluser'])->name('total.user');
 
 
+Route::get('/pending-user', [AdminController::class, 'pendinguser'])->name('pending.user');
 
-Route::get('/pending-user', function () {
-    return view('pending_user'); // ✅ pending_user.blade.php
-})->name('pending.user');
+ Route::get('/deposit-report', [IncomeController::class,'depositReport'])->name('deposit-report');
+ Route::post('/deposit/status-update', [IncomeController::class, 'updateStatus'])->name('deposit-statusUpdate');
 
- Route::get('/pending-deposite', function () {
-    return view('pending_deposite'); // ✅ pending_deposite.blade.php
-})->name('pending.deposite');
+ Route::get('/pending-withdraw', [IncomeController::class, 'pendingWithdraw'])->name('pending-withdraw');
 
- Route::get('/reject-deposite', function () {
-    return view('reject_deposite'); // ✅ reject_deposite.blade.php
-})->name('reject.deposite');
+ Route::get('/approved-withdraw', [IncomeController::class, 'ApprovedWithdraw'])->name('approved-withdraw');
 
+ Route::get('/fund-report', [IncomeController::class, 'addfundreport'])->name('fund-report');
+ Route::post('/fund/status-update', [IncomeController::class, 'fundStatus'])->name('fund-statusUpdate');
+
+  Route::post('/fund/status-update', [IncomeController::class, 'fundStatus'])->name('fund-statusUpdate');
 /*
 |--------------------------------------------------------------------------
 | Protected Routes (LOGIN REQUIRED)

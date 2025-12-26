@@ -91,13 +91,15 @@
                             <div class="collapse" id="sidebarEcommerce" style="">
                                 <ul class="side-nav-second-level">
                                     <li>
+                                        <a href="{{ route('total.user') }}">Total User</a>
+                                    </li>
+                                    <li>
                                         <a href="{{ route('active.user') }}">Active User</a>
                                     </li>
 
                                       <li>
                                         <a href="{{ route('pending.user') }}">Pending User</a>
                                     </li>
-
                                     
                                     
                                 </ul>
@@ -117,13 +119,10 @@
                             <div class="collapse " id="sidebarEma" style="">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="{{ route('pending.deposite') }}">Pending Deposite</a>
+                                        <a href="{{ route('deposit-report') }}">Deposite Report</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('reject.deposite') }}">Rejected Deposite</a>
-                                    </li>
-                                      <li>
-                                        <a href="apps-email-read.html">Approval Deposite</a>
+                                        <a href="{{ route('fund-report') }}">Fund Report</a>
                                     </li>
                                 </ul>
                             </div>
@@ -144,13 +143,13 @@
                             <div class="collapse " id="sidebarEmai" style="">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="apps-email-inbox.html">Pending  Withdrawal</a>
+                                        <a href="{{route('pending-withdraw')}}">Pending  Withdrawal</a>
                                     </li>
                                     <li>
                                         <a href="apps-email-read.html">Rejected Withdrawal</a>
                                     </li>
                                       <li>
-                                        <a href="apps-email-read.html">Approval Withdrawal</a>
+                                        <a href="{{route('approved-withdraw')}}">Approval Withdrawal</a>
                                     </li>
                                 </ul>
                             </div>

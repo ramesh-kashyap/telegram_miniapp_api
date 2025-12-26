@@ -33,6 +33,22 @@ class AdminController extends Controller
     //     $Roiincome = Income::where('remarks','Roi Income');
     //     return view('dashboard', compact('Roiincome'));
     // }
+    public function activeuser(){
+         $activeUsers = TelegramUser::where('status' ,'Active')->get();
+        return view('active_user', compact('activeUsers'));
+    }
+    public function pendinguser(){
+         $pendingUsers = TelegramUser::where('status' ,'Pending')->get();
+        return view('pending-user', compact('pendingUsers'));
+    }
+
+     public function totaluser(){
+         $totalUsers = TelegramUser::get();
+        //  dd($totalUsers);
+        return view('total-user', compact('totalUsers'));
+    }
+   
+
 
     public function users()
     {

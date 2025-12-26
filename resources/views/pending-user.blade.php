@@ -3,9 +3,9 @@
 @section('content')
 <div class="max-w-7xl mx-auto bg-white p-6 rounded-lg shadow" style="padding-top: 10px; margin-top: 10px;">
     <h2 class="text-2xl font-semibold mb-4" style="margin-left: 10px;margin-top: 10px">
-        active user
+        pending user
     </h2>
-     <div class="row">
+      <div class="row">
                             <div class="col-xl-12">
                                 <div class="card">
                                     <div class="card-body">
@@ -44,7 +44,7 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            @forelse($activeUsers as $user)
+                                                            @forelse($pendingUsers as $user)
                                                             <tr>
                                                                 <td class="table-user">
                                                                     <!-- <img src="assets/images/users/avatar-2.jpg" alt="table-user" class="me-2 rounded-circle"> -->
@@ -66,7 +66,6 @@
     </tr>
 @endforelse
                                                         </tbody>
-                                                        {{ $activeUsers->links() }}
                                                     </table>
                                                 </div> <!-- end table-responsive-->                     
                                             </div> 
@@ -76,7 +75,6 @@
                                 </div> <!-- end card -->
                             </div><!-- end col-->
                         </div>
-
     
 </div>
 @endsection
