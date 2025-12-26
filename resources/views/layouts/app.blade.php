@@ -91,11 +91,11 @@
                             <div class="collapse" id="sidebarEcommerce" style="">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="apps-ecommerce-products.html">Active User</a>
+                                        <a href="{{ route('active.user') }}">Active User</a>
                                     </li>
 
                                       <li>
-                                        <a href="apps-ecommerce-products.html">Pending User</a>
+                                        <a href="{{ route('pending.user') }}">Pending User</a>
                                     </li>
 
                                     
@@ -117,10 +117,10 @@
                             <div class="collapse " id="sidebarEma" style="">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="apps-email-inbox.html">Pending Deposite</a>
+                                        <a href="{{ route('pending.deposite') }}">Pending Deposite</a>
                                     </li>
                                     <li>
-                                        <a href="apps-email-read.html">Rejected Deposite</a>
+                                        <a href="{{ route('reject.deposite') }}">Rejected Deposite</a>
                                     </li>
                                       <li>
                                         <a href="apps-email-read.html">Approval Deposite</a>
