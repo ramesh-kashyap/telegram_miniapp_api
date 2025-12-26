@@ -34,7 +34,23 @@ Route::get('/daily-referral-income', [IncomeController::class, 'dailyReferralInc
     
 Route::get('/level-income', [IncomeController::class, 'levelIncome']) ->name('level.income');
 
+Route::get('/active-user', function () {
+    return view('active_user'); // ✅ active_user.blade.php
+})->name('active.user');
 
+
+
+Route::get('/pending-user', function () {
+    return view('pending_user'); // ✅ pending_user.blade.php
+})->name('pending.user');
+
+ Route::get('/pending-deposite', function () {
+    return view('pending_deposite'); // ✅ pending_deposite.blade.php
+})->name('pending.deposite');
+
+ Route::get('/reject-deposite', function () {
+    return view('reject_deposite'); // ✅ reject_deposite.blade.php
+})->name('reject.deposite');
 
 /*
 |--------------------------------------------------------------------------
