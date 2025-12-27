@@ -93,12 +93,18 @@ class UserTaskController extends Controller
 
 
 
- public function changePassword()
+
+    public function taskCreate()
     {
-        return view('change_password'); 
-        // resources/views/change_password.blade.php
+        return view('task_create');
     }
   
+
+
+        public function dailyTask()
+    {
+        return view('daily_tasks_create');
+    }
 
 
 }
