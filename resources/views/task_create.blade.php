@@ -1,3 +1,7 @@
+@extends('layouts.app')
+
+@section('content')
+
 
 <style>
     body {
@@ -16,7 +20,8 @@
 
     .container {
         width: 100%;
-        max-width: 480px;
+        max-width: 600px;
+        margin-top:-50px;
     }
 
     .card {
@@ -140,3 +145,7 @@
     </div>
 </div>
 
+
+</div>
+
+@endsection

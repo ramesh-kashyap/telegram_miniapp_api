@@ -1,4 +1,5 @@
-
+@extends("layouts.app")
+@section("content")
 
 <style>
     body {
@@ -16,7 +17,7 @@
     }
 
     .card {
-        width: 100%;
+        width: 60%;
         max-width: 900px;
         background: #ffffff;
         border-radius: 8px;
@@ -44,7 +45,7 @@
 
     .form-row {
         display: grid;
-        grid-template-columns: 1fr 2fr;
+        grid-template-columns: 1fr 4fr;
         gap: 20px;
         align-items: center;
         margin-bottom: 20px;
@@ -149,4 +150,4 @@
 </div>
 
 
-
+@endsection

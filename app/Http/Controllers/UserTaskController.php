@@ -90,4 +90,21 @@ class UserTaskController extends Controller
             'message' => "You have successfully claimed $task->reward_coins from $task->name."
         ]);
     }
+
+
+
+
+    public function taskCreate()
+    {
+        return view('task_create');
+    }
+  
+
+
+        public function dailyTask()
+    {
+        return view('daily_tasks_create');
+    }
+
+
 }
