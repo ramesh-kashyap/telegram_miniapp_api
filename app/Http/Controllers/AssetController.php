@@ -157,7 +157,8 @@ class AssetController extends Controller
 
             // Deduct USDT
             $user->usdt_balance -= $pkg['price'];
-            $user->package -= $pkg['price'];
+            $user->package += $pkg['price'];
+            $user->active_status = 'Active';
             $user->save();
 
              $oftPrice = DB::table('general_settings')
