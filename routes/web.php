@@ -64,8 +64,8 @@ Route::get('/pending-user', [AdminController::class, 'pendinguser'])->name('pend
 
 
 
-
-
+    Route::get('/tasks', [AdminController::class, 'tasks'])->name('tasks');
+    Route::get('/daily-tasks', [AdminController::class, 'dailyTasks'])->name('daily_tasks');
 
   
  
@@ -86,13 +86,11 @@ Route::middleware('auth')->group(function () {
     // Admin
     Route::get('/users', [AdminController::class, 'users'])->name('users');
 
-      Route::get('/tasks', [AdminController::class, 'tasks'])->name('tasks');
     Route::get('/tasks/create', [UserTaskController::class, 'createTask'])->name('create_task');
     Route::post('/tasks', [AdminController::class, 'storeTask'])->name('store_task');
  
 
 
-    Route::get('/daily-tasks', [AdminController::class, 'dailyTasks'])->name('daily_tasks');
     Route::get('/daily-tasks/create', [AdminController::class, 'createDailyTask'])->name('create_daily_task');
     Route::post('/daily-tasks', [AdminController::class, 'storeDailyTask'])->name('store_daily_task');
 
