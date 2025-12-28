@@ -90,7 +90,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/tasks', [AdminController::class, 'storeTask'])->name('store_task');
  
 
-
+    
     Route::get('/daily-tasks/create', [AdminController::class, 'createDailyTask'])->name('create_daily_task');
     Route::post('/daily-tasks', [AdminController::class, 'storeDailyTask'])->name('store_daily_task');
 
